@@ -19,12 +19,12 @@ import java.util.UUID;
 @Entity
 public class Localisation extends BaseEntity {
 
-    public Localisation(UUID id, String city, String province) {
-        super(id);
+    public Localisation(UUID id, String city, String province, String upc) {
+        super(id, upc);
         this.city = city;
         this.province = province;
     }
-
+    
     @Column(name="city")
     private String city;
 

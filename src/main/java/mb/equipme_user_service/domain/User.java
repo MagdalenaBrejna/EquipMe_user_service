@@ -15,8 +15,8 @@ import java.util.UUID;
 @Inheritance(strategy = InheritanceType.JOINED)
 public class User extends BaseEntity {
 
-    public User(UUID userId, String userEmail, String userPassword, Boolean accountEnabled, String userTelephone, byte[] userImage, Boolean getNotification, String userBankAccountNumber) {
-        super(userId);
+    public User(UUID userId, String userEmail, String userPassword, Boolean accountEnabled, String userTelephone, byte[] userImage, Boolean getNotification, String userBankAccountNumber,  String upc) {
+        super(userId, upc);
         this.userEmail = userEmail;
         this.userPassword = userPassword;
         this.accountEnabled = accountEnabled;

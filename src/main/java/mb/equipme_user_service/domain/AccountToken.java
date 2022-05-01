@@ -18,8 +18,8 @@ import java.util.UUID;
 @Entity
 public class AccountToken extends BaseEntity {
 
-    public AccountToken(UUID id, String token, LocalDate expirationDate) {
-        super(id);
+    public AccountToken(UUID id, String upc, String token, LocalDate expirationDate) {
+        super(id, upc);
         this.token = token;
         this.expirationDate = expirationDate;
     }

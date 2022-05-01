@@ -17,8 +17,8 @@ import java.util.UUID;
 @Entity
 public class Company extends User {
 
-    public Company(UUID userId, String userEmail, String userPassword, Boolean accountEnabled, String userTelephone, byte[] userImage, Boolean getNotification, String userBankAccountNumber, String name, String NIP) {
-        super(userId, userEmail, userPassword, accountEnabled, userTelephone, userImage, getNotification, userBankAccountNumber);
+    public Company(UUID userId, String userEmail, String userPassword, Boolean accountEnabled, String userTelephone, byte[] userImage, Boolean getNotification, String userBankAccountNumber, String name, String NIP, String upc) {
+        super(userId, userEmail, userPassword, accountEnabled, userTelephone, userImage, getNotification, userBankAccountNumber, upc);
         this.name = name;
         this.NIP = NIP;
     }
@@ -28,9 +28,6 @@ public class Company extends User {
 
     @Column(name="nip")
     private String NIP;
-
-    //@OneToMany(cascade = CascadeType.ALL, mappedBy = "company")
-    //private Set<Localisation> private_localisations = new HashSet<>();
 
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(name = "company_localisation", joinColumns = @JoinColumn(name = "company_id"), inverseJoinColumns = @JoinColumn(name = "localisation_id"))

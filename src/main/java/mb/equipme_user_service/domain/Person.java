@@ -17,8 +17,8 @@ import java.util.UUID;
 @Entity
 public class Person extends User {
 
-    public Person(UUID userId, String userEmail, String userPassword, Boolean accountEnabled, String userTelephone, byte[] userImage, Boolean getNotification, String userBankAccountNumber, String name, String lastName) {
-        super(userId, userEmail, userPassword, accountEnabled, userTelephone, userImage, getNotification, userBankAccountNumber);
+    public Person(UUID userId, String userEmail, String userPassword, Boolean accountEnabled, String userTelephone, byte[] userImage, Boolean getNotification, String userBankAccountNumber, String name, String lastName, String upc) {
+        super(userId, userEmail, userPassword, accountEnabled, userTelephone, userImage, getNotification, userBankAccountNumber, upc);
         this.name = name;
         this.lastName = lastName;
     }

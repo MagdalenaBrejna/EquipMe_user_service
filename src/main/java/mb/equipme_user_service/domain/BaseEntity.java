@@ -12,8 +12,9 @@ import java.util.UUID;
 @MappedSuperclass
 public class BaseEntity {
 
-    public BaseEntity(UUID id) {
+    public BaseEntity(UUID id, String upc) {
         this.id = id;
+        this.upc = upc;
     }
 
     @Id
@@ -22,6 +23,9 @@ public class BaseEntity {
     @Type(type="org.hibernate.type.UUIDCharType")
     @Column(length = 36, columnDefinition = "varchar(36)", updatable = false, nullable = false)
     private UUID id;
+
+    @Column(name="upc", unique = true)
+    private String upc;
 
 }
 
