@@ -2,11 +2,9 @@ package mb.equipme_user_service.web.mappers;
 
 import mb.equipme_user_service.domain.Localisation;
 import mb.equipme_user_service.web.models.LocalisationDto;
-import org.mapstruct.Mapper;
-import org.mapstruct.Mapping;
-import org.mapstruct.Mappings;
+import org.mapstruct.*;
 
-@Mapper
+@Mapper(componentModel = "spring")
 public interface LocalisationMapper {
 
     @Mappings({
@@ -24,4 +22,7 @@ public interface LocalisationMapper {
             @Mapping(target="province", source="dto.province")
     })
     Localisation localisationDtoToLocalisation(LocalisationDto dto);
+
+    @BeanMapping(nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
+    void updateLocalisationFromDto(LocalisationDto dto, @MappingTarget Localisation entity);
 }

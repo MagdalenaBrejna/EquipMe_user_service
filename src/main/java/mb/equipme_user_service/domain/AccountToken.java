@@ -4,10 +4,8 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
+
+import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.UUID;
 
@@ -16,6 +14,7 @@ import java.util.UUID;
 @AllArgsConstructor
 @Builder
 @Entity
+@Table(name = "tokens")
 public class AccountToken extends BaseEntity {
 
     public AccountToken(UUID id, String upc, String token, LocalDate expirationDate) {

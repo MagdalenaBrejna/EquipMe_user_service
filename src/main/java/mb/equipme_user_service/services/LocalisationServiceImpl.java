@@ -2,7 +2,9 @@ package mb.equipme_user_service.services;
 
 import mb.equipme_user_service.domain.Localisation;
 import mb.equipme_user_service.repositories.LocalisationRepository;
-import mb.equipme_user_service.services.LocalisationService;
+import mb.equipme_user_service.web.mappers.LocalisationMapper;
+import mb.equipme_user_service.web.models.LocalisationDto;
+
 import javax.transaction.Transactional;
 import java.util.ArrayList;
 import java.util.List;
@@ -10,10 +12,12 @@ import java.util.UUID;
 
 public class LocalisationServiceImpl implements LocalisationService {
 
-    LocalisationRepository localisationRepository;
+    private LocalisationRepository localisationRepository;
+    private LocalisationMapper mapper;
 
-    public LocalisationServiceImpl(LocalisationRepository localisationRepository) {
+    public LocalisationServiceImpl(LocalisationRepository localisationRepository, LocalisationMapper mapper) {
         this.localisationRepository = localisationRepository;
+        this.mapper = mapper;
     }
 
     @Override
@@ -44,5 +48,12 @@ public class LocalisationServiceImpl implements LocalisationService {
     @Override
     public void deleteById(UUID localisationUUID) {
         localisationRepository.deleteById(localisationUUID);
+    }
+
+    @Override
+    public void updateLocalisation(LocalisationDto updatedLocalisation) {
+        Localisation localisation = localisationRepository.findById(updatedLocalisation.getId()).orElse(null);
+        mapper.updateLocalisationFromDto(updatedLocalisation, localisation);
+        save(localisation);
     }
 }

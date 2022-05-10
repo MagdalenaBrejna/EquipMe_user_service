@@ -2,11 +2,9 @@ package mb.equipme_user_service.web.mappers;
 
 import mb.equipme_user_service.domain.Company;
 import mb.equipme_user_service.web.models.CompanyDto;
-import org.mapstruct.Mapper;
-import org.mapstruct.Mapping;
-import org.mapstruct.Mappings;
+import org.mapstruct.*;
 
-@Mapper
+@Mapper(componentModel = "spring")
 public interface CompanyMapper {
 
     @Mappings({
@@ -38,4 +36,7 @@ public interface CompanyMapper {
             @Mapping(target="userBankAccountNumber", source="dto.userBankAccountNumber")
     })
     Company companyDtoToCompany(CompanyDto dto);
+
+    @BeanMapping(nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
+    void updateCompanyFromDto(CompanyDto dto, @MappingTarget Company entity);
 }
